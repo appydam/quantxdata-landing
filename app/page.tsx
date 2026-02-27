@@ -11,22 +11,79 @@ export default function Home() {
             </span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Real-time tick data, OHLCV, order books, and options data from 120+ exchanges.
-            Pay-as-you-go pricing. API-first infrastructure for quant traders and institutions.
+            Real-time and historical data from 120+ exchanges. Pre-normalized for ML/AI pipelines, 
+            delivered via REST API, WebSocket, or Parquet bulk exports. Built for quant traders and institutions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="#contact"
               className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors"
             >
-              Start Free Trial
+              Request API Access
             </a>
             <a
-              href="#pricing"
+              href="#"
               className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white rounded-lg font-semibold transition-colors border border-white/20"
             >
-              View Pricing
+              Download Sample Dataset
             </a>
+          </div>
+          
+          {/* Stats Bar - Positioned immediately below CTAs */}
+          <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto">
+            <StatItem value="120+" label="Exchanges" />
+            <StatItem value="99.9%" label="Uptime SLA" />
+            <StatItem value="5+ Years" label="Historical Data" />
+          </div>
+          
+          {/* Trust Indicators */}
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-sm text-gray-400">
+            <div className="flex items-center gap-2">
+              <span className="text-green-400">🔒</span>
+              <span>SOC-2 Compliant</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-blue-400">✓</span>
+              <span>Institutional-Grade Security</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-cyan-400">⚡</span>
+              <span>Sub-10ms Latency</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How Our Data Works - Methodology Section */}
+      <section className="px-4 py-16 md:px-8">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-4">
+            How Our Data Works
+          </h2>
+          <p className="text-lg text-gray-300 text-center mb-12 max-w-2xl mx-auto">
+            Our infrastructure handles billions of data points daily with guaranteed accuracy
+          </p>
+          <div className="grid md:grid-cols-4 gap-6">
+            <MethodologyStep
+              number="1"
+              title="Collect"
+              description="Direct exchange connections with redundant feeds. Capture every trade, quote, and order book update."
+            />
+            <MethodologyStep
+              number="2"
+              title="Normalize"
+              description="Convert raw data into standardized schemas. Consistent timestamps, unified symbols, and ML-ready formats."
+            />
+            <MethodologyStep
+              number="3"
+              title="Verify"
+              description="Multi-layer validation checks. Detect anomalies, filter outliers, and ensure data integrity."
+            />
+            <MethodologyStep
+              number="4"
+              title="Deliver"
+              description="API, WebSocket, or bulk export. Sub-10ms latency from exchange to your infrastructure."
+            />
           </div>
         </div>
       </section>
@@ -153,23 +210,26 @@ export default function Home() {
       <section id="contact" className="px-4 py-16 md:px-8 bg-slate-900/50">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Ready to Get Started?
+            Start Building with QuantXData
           </h2>
-          <p className="text-xl text-gray-300 mb-8">
-            Start with a free 30-day trial. No credit card required.
+          <p className="text-xl text-gray-300 mb-4">
+            Pre-normalized, AI-ready datasets. Start with a free 30-day trial.
+          </p>
+          <p className="text-base text-gray-400 mb-8">
+            No credit card required. Full API access included.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <a
               href="mailto:hello@quantxdata.ai"
               className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors"
             >
-              Contact Sales
+              Request API Access
             </a>
             <a
               href="#"
               className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white rounded-lg font-semibold transition-colors border border-white/20"
             >
-              View Documentation
+              View API Documentation
             </a>
           </div>
           <p className="text-sm text-gray-400">
@@ -236,6 +296,39 @@ function PricingItem({ label, price }: { label: string; price: string }) {
     <div className="flex justify-between items-center">
       <span className="text-lg text-white">{label}</span>
       <span className="text-lg font-semibold text-blue-400">{price}</span>
+    </div>
+  );
+}
+
+// Component: Stat Item (for stats bar below hero)
+function StatItem({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="text-center">
+      <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 mb-2">
+        {value}
+      </div>
+      <div className="text-sm md:text-base text-gray-300">{label}</div>
+    </div>
+  );
+}
+
+// Component: Methodology Step (for How Our Data Works section)
+function MethodologyStep({
+  number,
+  title,
+  description,
+}: {
+  number: string;
+  title: string;
+  description: string;
+}) {
+  return (
+    <div className="bg-white/5 border border-white/10 rounded-lg p-6 hover:bg-white/10 transition-colors backdrop-blur-sm">
+      <div className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 mb-3">
+        {number}
+      </div>
+      <h3 className="text-xl font-semibold text-white mb-3">{title}</h3>
+      <p className="text-gray-300 text-sm">{description}</p>
     </div>
   );
 }
