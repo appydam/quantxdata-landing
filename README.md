@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# QuantXData Landing Page
 
-## Getting Started
+Institutional-grade cryptocurrency market data for quant traders, hedge funds, and fintech developers.
 
-First, run the development server:
+## Stack
+
+- **Next.js 14** with App Router
+- **Tailwind CSS** for styling
+- **TypeScript** for type safety
+- **Lucide React** for icons
+
+## Pages
+
+1. **/** — Homepage with hero, stats, products grid, methodology
+2. **/products** — 6 data products with full technical specifications
+3. **/pricing** — 4 pricing tiers with comparison table and API cost calculator
+4. **/docs** — Complete API documentation (12 endpoints)
+5. **/about** — Mission, team, and company timeline
+6. **/contact** — Sales contact form and direct email addresses
+
+## Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+## Deploy
 
-To learn more about Next.js, take a look at the following resources:
+### Vercel (Recommended)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npx vercel --prod
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Or connect the GitHub repo to your Vercel dashboard for automatic deployments.
 
-## Deploy on Vercel
+### Manual Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The project is configured for Vercel (`vercel.json` included). For other platforms, ensure you:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Run `npm run build`
+2. Serve the `.next` directory
+3. Set environment variables if needed
+
+## Repository
+
+https://github.com/appydam/quantxdata-landing
+
+## License
+
+Proprietary - All rights reserved
