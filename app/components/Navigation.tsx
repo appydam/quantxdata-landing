@@ -11,6 +11,7 @@ export default function Navigation() {
     { href: '/products', label: 'Products' },
     { href: '/pricing', label: 'Pricing' },
     { href: '/docs', label: 'Docs' },
+    { href: '/mcp', label: 'AI Access' },
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
   ];

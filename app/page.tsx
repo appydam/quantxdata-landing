@@ -7,12 +7,12 @@ export default function Home() {
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
             Institutional-Grade
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
-              Crypto Market Data
+              Crypto Market Data — Now AI-Native
             </span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Real-time and historical data from 120+ exchanges. Pre-normalized for ML/AI pipelines, 
-            delivered via REST API, WebSocket, or Parquet bulk exports. Built for quant traders and institutions.
+            Real-time and historical data from 120+ exchanges. Query with AI agents or REST API. 
+            Pre-normalized for ML pipelines. Built for quant traders.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -30,10 +30,19 @@ export default function Home() {
           </div>
           
           {/* Stats Bar - Positioned immediately below CTAs */}
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto">
+          <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-4xl mx-auto">
             <StatItem value="120+" label="Exchanges" />
             <StatItem value="99.9%" label="Uptime SLA" />
             <StatItem value="5+ Years" label="Historical Data" />
+            <StatItem value="Sub-10ms" label="Latency" />
+          </div>
+          
+          {/* AI-Native Badge */}
+          <div className="mt-8 flex justify-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
+              <span className="text-emerald-400">✨</span>
+              <span className="text-sm font-semibold text-emerald-400">AI-Native (MCP)</span>
+            </div>
           </div>
           
           {/* Trust Indicators */}
@@ -119,6 +128,64 @@ export default function Home() {
               title="Historical Archives"
               description="7+ years of validated data. Query any trading pair, any exchange, any timeframe."
             />
+            <ProductCard
+              title="AI Agent Access (MCP)"
+              description="Query crypto data using natural language through Claude, ChatGPT, or any MCP-compatible AI tool. No code required. 60-second setup."
+              href="/mcp"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* AI-Native Data Access Section */}
+      <section className="px-4 py-16 md:px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              The First Crypto Data API Your AI Can Use
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              QuantXData is the only institutional data provider with native AI integration via Model Context Protocol (MCP). 
+              Connect your AI tools in 60 seconds.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+              <h3 className="text-xl font-bold text-white mb-3">For Researchers</h3>
+              <p className="text-gray-300">
+                Ask questions in plain English. No Python notebooks, no API boilerplate. Get instant analysis across 120+ exchanges.
+              </p>
+            </div>
+            
+            <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+              <h3 className="text-xl font-bold text-white mb-3">For Developers</h3>
+              <p className="text-gray-300">
+                Install with one command. Works with Claude Desktop, VS Code, Cursor, Cline, and any MCP tool. Zero maintenance.
+              </p>
+            </div>
+            
+            <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+              <h3 className="text-xl font-bold text-white mb-3">For Traders</h3>
+              <p className="text-gray-300">
+                Monitor funding rates, order books, and cross-exchange spreads in real time. Query with natural language, get actionable data.
+              </p>
+            </div>
+          </div>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/mcp"
+              className="px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-semibold transition-colors text-center"
+            >
+              Install MCP Server
+            </a>
+            <a
+              href="/mcp#examples"
+              className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white rounded-lg font-semibold transition-colors border border-white/20 text-center"
+            >
+              View AI Examples
+            </a>
           </div>
         </div>
       </section>
@@ -252,11 +319,32 @@ export default function Home() {
 }
 
 // Component: Product Card
-function ProductCard({ title, description }: { title: string; description: string }) {
-  return (
-    <div className="bg-white/5 border border-white/10 rounded-lg p-6 hover:bg-white/10 transition-colors backdrop-blur-sm">
+function ProductCard({ title, description, href }: { title: string; description: string; href?: string }) {
+  const content = (
+    <>
       <h3 className="text-xl font-semibold text-white mb-3">{title}</h3>
       <p className="text-gray-300">{description}</p>
+      {href && (
+        <div className="mt-4">
+          <span className="text-emerald-400 text-sm font-medium inline-flex items-center gap-1">
+            Learn More →
+          </span>
+        </div>
+      )}
+    </>
+  );
+
+  if (href) {
+    return (
+      <a href={href} className="bg-white/5 border border-white/10 rounded-lg p-6 hover:bg-emerald-500/10 hover:border-emerald-500/30 transition-all backdrop-blur-sm block group">
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <div className="bg-white/5 border border-white/10 rounded-lg p-6 hover:bg-white/10 transition-colors backdrop-blur-sm">
+      {content}
     </div>
   );
 }
